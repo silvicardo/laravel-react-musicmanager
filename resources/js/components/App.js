@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 export default class App extends Component {
+
+    constructor(props){
+      super(props);
+    }
+
+
     render() {
         return (
           <BrowserRouter>
@@ -13,8 +20,21 @@ export default class App extends Component {
                             <div className="card-header">App Component</div>
 
                             <div className="card-body">
-                                I'm the App component!
-                                React Works!
+                                <p>I'm the App component!
+                                React Works!</p>
+                                <button
+                                className="btn btn-primary"
+                                onClick={() => {
+
+                                    console.log('ciao')
+
+                                    fetch('/api/api-test')
+                                    .then(response => response.json())
+                                    .then(data => console.log(data));
+
+                                }}
+                                >MakeApiCall</button>
+
                             </div>
                         </div>
                     </div>

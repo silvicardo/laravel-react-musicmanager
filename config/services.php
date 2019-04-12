@@ -13,7 +13,11 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
-
+    'spotify' => [
+      'client_id' => env('SPOTIFY_KEY'),
+      'client_secret' => env('SPOTIFY_SECRET'),
+      'redirect' => env('SPOTIFY_REDIRECT_URI')
+    ],
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
