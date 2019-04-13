@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/api-test', function(Request $request){
   $api = new Larafy();
-  $foundAlbums = $api->searchAlbums('Master of Puppets');
-  return response()->json($foundAlbums->items);
+  $foundAlbums = $api->setMarket('IT')->setLocale('it_IT')->getGenreSeeds();;
+  // $foundAlbums = $api->searchAlbums('Master of Puppets');
+    
+  return response()->json($foundAlbums);
 });

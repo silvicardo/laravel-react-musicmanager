@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "react-router-dom": "^5.0.0"
+        "react-router-dom": "^5.0.0",
+        "reactstrap": "^8.0.0"
     }
 }

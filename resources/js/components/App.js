@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import MainNavbar from './MainNavbar';
 import axios from 'axios';
 
 export default class App extends Component {
@@ -9,10 +10,12 @@ export default class App extends Component {
       super(props);
     }
 
-
     render() {
+
+
         return (
           <BrowserRouter>
+            <MainNavbar navbarLinks={this.props.navLinks}/>
             <div className="container py-5">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
@@ -24,13 +27,13 @@ export default class App extends Component {
                                 React Works!</p>
                                 <button
                                 className="btn btn-primary"
-                                onClick={() => {
+                                onClick={async () => {
 
-                                    console.log('ciao')
+                                    console.log('INIZIO LA RICERCA')
 
-                                    fetch('/api/api-test')
-                                    .then(response => response.json())
-                                    .then(data => console.log(data));
+                                    const {data} = await axios.get('/api/api-test')
+
+                                    console.log(data);
 
                                 }}
                                 >MakeApiCall</button>
@@ -44,6 +47,10 @@ export default class App extends Component {
         );
     }
 }
+
+App.defaultProps = {
+  navLinks: ['this', 'is', 'testing'],
+};
 
 if (document.getElementById('app')) {
     ReactDOM.render(<App />, document.getElementById('app'));
