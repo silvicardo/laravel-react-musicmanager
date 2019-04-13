@@ -28,7 +28,7 @@ Route::get('/genres', function(Request $request){
   return response()->json($genres);
 });
 
-Route::get('/artist/{name}', function(Request $request){
+Route::get('/artists/{name}', function(Request $request){
 
 
   $api = new Larafy();
@@ -60,7 +60,10 @@ Route::get('/category/{name}', function(Request $request){
 
   $api = new Larafy();
 
-  $foundCategory = $api->setMarket('IT')->setLocale('it_IT')->getBrowseCategory($request->name);
+  $foundCategory = [
+    'details' => $api->setMarket('IT')->setLocale('it_IT')->getBrowseCategory($request->name),
+    'playlists' => $api->setMarket('IT')->setLocale('it_IT')->getCategoryPlaylists($request->name)
+  ];
 
   return response()->json($foundCategory);
 });

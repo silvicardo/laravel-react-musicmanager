@@ -25,7 +25,7 @@ export default class MainNavbar extends Component {
 
     const navItems = navbarLinks.map((item, index) => (
       <NavItem key={index}>
-        <NavLink  href={`/${item}/`}>{item}</NavLink>
+        <NavLink  href={`/${item}/`}>{item.toUpperCase()}</NavLink>
       </NavItem>
     ));
 
