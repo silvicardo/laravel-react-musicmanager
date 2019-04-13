@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export default class MainNavbar extends Component {
@@ -30,8 +30,8 @@ export default class MainNavbar extends Component {
     ));
 
     return (
-      <div>
-        <Navbar color="faded" light>
+      <Fragment>
+        <Navbar color="dark" dark>
           <NavbarBrand href="/" className="mr-auto">Music Manager</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
@@ -40,7 +40,7 @@ export default class MainNavbar extends Component {
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </Fragment>
     );
   }
 }

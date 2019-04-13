@@ -78076,8 +78076,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _MainNavbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MainNavbar */ "./resources/js/components/MainNavbar.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _GenresList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GenresList */ "./resources/js/components/GenresList.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -78108,64 +78109,80 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var App =
 /*#__PURE__*/
 function (_Component) {
   _inherits(App, _Component);
 
   function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      genres: []
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getGenres();
+    }
+  }, {
+    key: "getGenres",
+    value: function () {
+      var _getGenres = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this2 = this;
+
+        var _ref, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log('INIZIO LA RICERCA');
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/api/api-test');
+
+              case 3:
+                _ref = _context.sent;
+                data = _ref.data;
+                this.setState({
+                  genres: data
+                }, //check state after update
+                function () {
+                  console.log('state now has following genres ', _this2.state.genres);
+                });
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getGenres() {
+        return _getGenres.apply(this, arguments);
+      }
+
+      return getGenres;
+    }()
+  }, {
     key: "render",
     value: function render() {
+      var genres = this.state.genres;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MainNavbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
         navbarLinks: this.props.navLinks
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container py-5"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-4"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header"
-      }, "App Component"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "I'm the App component! React Works!"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "btn btn-primary",
-        onClick:
-        /*#__PURE__*/
-        _asyncToGenerator(
-        /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-          var _ref2, data;
-
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  console.log('INIZIO LA RICERCA');
-                  _context.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/api/api-test');
-
-                case 3:
-                  _ref2 = _context.sent;
-                  data = _ref2.data;
-                  console.log(data);
-
-                case 6:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        }))
-      }, "MakeApiCall")))))));
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GenresList__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        genres: genres
+      }));
     }
   }]);
 
@@ -78180,6 +78197,88 @@ App.defaultProps = {
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App, null), document.getElementById('app'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/GenreCard.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/GenreCard.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var GenreCard = function GenreCard(_ref) {
+  var name = _ref.name,
+      image = _ref.image;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card",
+    style: {
+      width: '18rem'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: image,
+    className: "card-img-top",
+    alt: "...",
+    style: {
+      maxWidth: '100%'
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, "Some quick example text to build on the card title and make up the bulk of the card's content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "btn btn-primary"
+  }, "Go somewhere")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (GenreCard);
+
+/***/ }),
+
+/***/ "./resources/js/components/GenresList.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/GenresList.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _GenreCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GenreCard */ "./resources/js/components/GenreCard.js");
+
+
+
+var GenresList = function GenresList(_ref) {
+  var fallbackImage = _ref.fallbackImage,
+      genres = _ref.genres;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container py-5"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-columns"
+  }, genres.map(function (genre, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GenreCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: index,
+      name: genre,
+      image: genre.image || fallbackImage
+    });
+  })));
+};
+
+GenresList.defaultProps = {
+  fallbackImage: "../images/spotifyLogo.png"
+};
+/* harmony default export */ __webpack_exports__["default"] = (GenresList);
 
 /***/ }),
 
@@ -78253,9 +78352,9 @@ function (_Component) {
           href: "/".concat(item, "/")
         }, item));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-        color: "faded",
-        light: true
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
+        color: "dark",
+        dark: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavbarBrand"], {
         href: "/",
         className: "mr-auto"
