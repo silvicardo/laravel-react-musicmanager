@@ -78075,10 +78075,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _MainNavbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MainNavbar */ "./resources/js/components/MainNavbar.js");
-/* harmony import */ var _GenresList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GenresList */ "./resources/js/components/GenresList.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _MainNavbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MainNavbar */ "./resources/js/components/MainNavbar.js");
+/* harmony import */ var _GenresList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GenresList */ "./resources/js/components/GenresList.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -78102,6 +78103,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -78147,10 +78149,11 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 console.log('INIZIO LA RICERCA');
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/api/api-test');
+                _context.prev = 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get('/api/genres');
 
-              case 3:
+              case 4:
                 _ref = _context.sent;
                 data = _ref.data;
                 this.setState({
@@ -78159,13 +78162,20 @@ function (_Component) {
                 function () {
                   console.log('state now has following genres ', _this2.state.genres);
                 });
+                _context.next = 12;
+                break;
 
-              case 6:
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
+                console.log('SEARCH ERROR');
+
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[1, 9]]);
       }));
 
       function getGenres() {
@@ -78175,12 +78185,222 @@ function (_Component) {
       return getGenres;
     }()
   }, {
+    key: "getArtist",
+    value: function () {
+      var _getArtist = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(name) {
+        var _this3 = this;
+
+        var _ref2, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log('INIZIO LA RICERCA ARTISTI');
+                _context2.prev = 1;
+                _context2.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/api/artist/".concat(name || 'Queen'));
+
+              case 4:
+                _ref2 = _context2.sent;
+                data = _ref2.data;
+                this.setState({
+                  artistSearchResults: data
+                }, //check state after update
+                function () {
+                  console.log('state now has following artists for your search', _this3.state.artistSearchResults);
+                });
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
+                console.log('SEARCH ERROR');
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[1, 9]]);
+      }));
+
+      function getArtist(_x) {
+        return _getArtist.apply(this, arguments);
+      }
+
+      return getArtist;
+    }()
+  }, {
+    key: "getSong",
+    value: function () {
+      var _getSong = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(title) {
+        var _this4 = this;
+
+        var _ref3, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                console.log('INIZIO LA RICERCA CANZONI');
+                _context3.prev = 1;
+                _context3.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/api/track/".concat(title || 'we are the champions'));
+
+              case 4:
+                _ref3 = _context3.sent;
+                data = _ref3.data;
+                this.setState({
+                  trackSearchResult: data
+                }, //check state after update
+                function () {
+                  console.log('state now has following tracks for your search', _this4.state.trackSearchResult);
+                });
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](1);
+                console.log('SEARCH ERROR');
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[1, 9]]);
+      }));
+
+      function getSong(_x2) {
+        return _getSong.apply(this, arguments);
+      }
+
+      return getSong;
+    }()
+  }, {
+    key: "getCategories",
+    value: function () {
+      var _getCategories = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this5 = this;
+
+        var _ref4, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                console.log('INIZIO LA POPOLAZIONE CATEGORIE');
+                _context4.prev = 1;
+                _context4.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/api/categories");
+
+              case 4:
+                _ref4 = _context4.sent;
+                data = _ref4.data;
+                this.setState({
+                  categories: data
+                }, //check state after update
+                function () {
+                  console.log('state now has following categories list', _this5.state.categories);
+                });
+                _context4.next = 12;
+                break;
+
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](1);
+                console.log('SEARCH ERROR');
+
+              case 12:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[1, 9]]);
+      }));
+
+      function getCategories() {
+        return _getCategories.apply(this, arguments);
+      }
+
+      return getCategories;
+    }()
+  }, {
+    key: "getCategory",
+    value: function () {
+      var _getCategory = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(name) {
+        var _this6 = this;
+
+        var _ref5, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                console.log('INIZIO LA RICERCA CATEGORIA SINGOLA');
+                _context5.prev = 1;
+                _context5.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_7___default.a.get("/api/category/".concat(name || 'workout'));
+
+              case 4:
+                _ref5 = _context5.sent;
+                data = _ref5.data;
+                this.setState({
+                  categorySearchResult: data
+                }, //check state after update
+                function () {
+                  console.log('state now has following tracks for your search', _this6.state.categorySearchResult);
+                });
+                _context5.next = 12;
+                break;
+
+              case 9:
+                _context5.prev = 9;
+                _context5.t0 = _context5["catch"](1);
+                console.log('SEARCH ERROR');
+
+              case 12:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[1, 9]]);
+      }));
+
+      function getCategory(_x3) {
+        return _getCategory.apply(this, arguments);
+      }
+
+      return getCategory;
+    }()
+  }, {
     key: "render",
     value: function render() {
       var genres = this.state.genres;
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MainNavbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MainNavbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
         navbarLinks: this.props.navLinks
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GenresList__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-5"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["ButtonGroup"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        onClick: this.getArtist.bind(this, 'queen')
+      }, "Artists Api Call"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        onClick: this.getSong.bind(this, 'nessun dorma')
+      }, "Tracks Api Call"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        onClick: this.getCategories.bind(this)
+      }, "Categories Api Call"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+        onClick: this.getCategory.bind(this, 'mood')
+      }, "Category Api Call"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GenresList__WEBPACK_IMPORTED_MODULE_6__["default"], {
         genres: genres
       }));
     }
